@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link
+	rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+	/>
+	<script src=
+"https://use.fontawesome.com/releases/v5.15.4/js/all.js">
+	</script>
+</head>
+<body>
+	<div class="container box p-6
+				has-background-light">
+	<h1 class="title has-text-centered
+				has-text-info">
+		PA-IA.org
+	</h1>
+	<!-- <h2 class="subtitle has-text-centered">
+		Sign Up Form
+	</h2> -->
+	<form method="post">
+			  
+		<div class="field">
+		<label class="label">Palabra</label>
+		<div class="control has-icons-right">
+			<input class="input" type="text" name="palabra" placeholder="Escribe aquí tu palabra">
+		{% if processed_pal == "" %}
+			<p class="help is-danger">El campo de palabra no puede estar vacío</p>
+		{% endif %}
+		</div>
+		</div>
+
+		<div class="field">
+			<div class="control">
+				<button class="button is-link">Submit</button>
+			</div>
+		</div>
+		
+		  
+		<div class="field">
+		<label class="label">Resultado</label>
+		<div class="control">
+			{% if processed_pal == None %}
+				<textarea class="textarea" placeholder="Paya" rows="8" readonly></textarea>		
+            {% else %}
+				<textarea class="textarea" placeholder="Paya" rows="8" readonly>{{ processed_pal }}</textarea>
+            {% endif %}
+		</div>
+		{% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+		</div>
+		  
+	</form>
+	</div>
+</body>
+</html>
